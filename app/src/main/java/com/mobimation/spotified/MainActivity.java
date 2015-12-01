@@ -15,6 +15,16 @@ import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 
+import java.util.List;
+
+import kaaes.spotify.webapi.android.SpotifyApi;
+import kaaes.spotify.webapi.android.SpotifyService;
+import kaaes.spotify.webapi.android.models.Album;
+import kaaes.spotify.webapi.android.models.ArtistSimple;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
 public class MainActivity extends Activity implements
         PlayerNotificationCallback, ConnectionStateCallback {
 
@@ -50,7 +60,7 @@ public class MainActivity extends Activity implements
 
             // Check if result comes from the correct activity
             if (requestCode == REQUEST_CODE) {
-                AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
+                final AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
                 if (response.getType() == AuthenticationResponse.Type.TOKEN) {
                     Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
 
@@ -61,7 +71,35 @@ public class MainActivity extends Activity implements
                             mPlayer.addConnectionStateCallback(MainActivity.this);
                             mPlayer.addPlayerNotificationCallback(MainActivity.this);
                            // mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
-                            mPlayer.play("spotify:track:4SSQPakZn44ia5DIlWwsKg");
+      //                      mPlayer.play("spotify:track:4SSQPakZn44ia5DIlWwsKg");
+
+                            // Try out the web API
+
+                            SpotifyApi api = new SpotifyApi();
+
+// Most (but not all) of the Spotify Web API endpoints require authorisation.
+// If you know you'll only use the ones that don't require authorisation you can skip this step
+                            api.setAccessToken(response.getAccessToken());
+
+                            SpotifyService spotify = api.getService();
+
+                            spotify.getAlbum("2dIGnmEIy1WZIcZCFSj6i8", new Callback<Album>() {
+                                @Override
+                                public void success(Album album, Response response) {
+                                    Log.d("Album success", album.name);
+                                    // Let´s do stuff with the Album
+                                    List<ArtistSimple> artistList;
+                                    artistList=album.artists;
+                                    Log.d("Spotified:","Album features "+artistList.size()+" artists.");
+                                    for (int n=0; n<artistList.size(); n++)
+                                        Log.d("Spotified:",artistList.get(n).name);
+                                }
+
+                                @Override
+                                public void failure(RetrofitError error) {
+                                    Log.d("Album failure", error.toString());
+                                }
+                            });
                         }
 
                         @Override
