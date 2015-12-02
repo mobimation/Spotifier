@@ -13,3 +13,5 @@ as long as this README tells you so.
 The next step planned once the above is in place is for tracks
 where corresponding video exists to play that video 
 in the UI background enhancing the musical experience.
+
+The code makes use of the kaaes.spotify.webapi.android API for Web API access.
