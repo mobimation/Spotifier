@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#181818">
+
+    <ImageView
+        android:layout_width="210px"
+        android:layout_height="210px"
+        android:id="@+id/thumbAlbum"
+        android:src="@drawable/album_thumb"
+        android:scaleType="fitStart" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="210px"
+        android:layout_weight="81">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="ALBUM"
+            android:id="@+id/labelAlbum"
+            android:textColor="#9e9e9e"
+            android:paddingLeft="10dp"
+            android:layout_weight="10"
+            android:textSize="6sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Så mycket bättre - Lisa Nilssons Dag"
+            android:id="@+id/titleAlbum"
+            android:textColor="#fcfcfc"
+            android:textSize="22sp"
+            android:paddingLeft="10dp"
+            android:layout_weight="34"
+            android:typeface="sans" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="By various artists - 2015 - 6 songs - 20 min"
+            android:id="@+id/infoAlbum"
+            android:textColor="#a0a0a0"
+            android:paddingLeft="10dp"
+            android:layout_weight="45"
+            android:textSize="6sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/controls"
+            android:layout_weight="15">
+
+            <ImageView
+                android:layout_width="103px"
+                android:layout_height="28px"
+                android:id="@+id/buttonPlay"
+                android:src="@drawable/button_play"
+                android:layout_marginLeft="16dp" />
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="28px"
+                android:id="@+id/buttonSave"
+                android:src="@drawable/button_save"
+                android:layout_marginLeft="11dp" />
+
+            <ImageView
+                android:layout_width="28px"
+                android:layout_height="28px"
+                android:id="@+id/buttonOptions"
+                android:src="@drawable/button_options"
+                android:layout_marginLeft="12dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
