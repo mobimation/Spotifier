@@ -8,4 +8,4 @@ the appearance of the official Spotify player as a skills training and demo.
 
 The next step planned once the above is in place is for tracks
 where corresponding video exists to play that video 
-in the UI background representing playback of the song.
+in the UI background enhancing the musical experience.
