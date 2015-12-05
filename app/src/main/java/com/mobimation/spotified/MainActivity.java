@@ -1,5 +1,8 @@
 package com.mobimation.spotified;
-
+/**
+ * Spotified is developed as a way of learning and exploring the Spotify Android API
+ * and Spotify Web API.
+ */
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,9 +31,8 @@ import retrofit.client.Response;
 public class MainActivity extends Activity implements
         PlayerNotificationCallback, ConnectionStateCallback {
 
-    // TODO: Replace with your client ID
     private static final String CLIENT_ID = "04a3ec398bcf4d709e09ec2897771f05";
-    // TODO: Replace with your redirect URI
+
     private static final String REDIRECT_URI = "spotified://callback";
 
     private Player mPlayer;
